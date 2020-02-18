@@ -1,0 +1,229 @@
+{
+	"dashboard": {
+		/* dashboard id value */ 
+		// "id": 1095318, 
+		/* dashboard name */  	
+		"title": "EBSESOF-001-WEB",
+		/* description content */
+		"description": "",
+		/* icon */
+		"icon": "line-chart",
+		/* created date */
+		// "created_at": "2020-02-03T08:26:35Z",
+		// "updated_at": "2020-02-12T06:31:29Z",
+		"visibility": "all",
+		"editable": "editable_by_all",
+		// "ui_url": "https://insights.newrelic.com/accounts/2589629/dashboards/1095318",
+		"ui_url": "https://insights.newrelic.com/accounts/2589629/",
+		// "api_url": "https://api.newrelic.com/v2/dashboards/1095318",
+		// "owner_email": "seul.lee@bespinglobal.com",
+		"metadata": {
+			"version": 1
+		},
+		"widgets": [
+			{
+				"visualization": "faceted_line_chart",
+				"layout": {
+					"width": 10,
+					"height": 1,
+					"row": 1,
+                                        "column": 2
+				},
+				// Customer's account id where you can see in url
+				"account_id": 2589629,
+				"data": [
+					{
+						"nrql": "SELECT average(cpuPercent) FROM SystemSample since 1 months ago facet cases(WHERE hostname='ESOF-PROD2-WEB01' as 'ESOF-PROD2-WEB01',WHERE hostname='ESOF-PROD2-WEB02' as 'ESOF-PROD2-WEB02') TIMESERIES 3 hours WITH TIMEZONE 'Asia/Seoul'"
+					}
+				],
+				"presentation": {
+					"title": "WEB Server - Average CPU ",
+					"notes": null
+				}
+			},
+			{
+				"visualization": "facet_table",
+				"layout": {
+					"width": 10,
+					"height": 1,
+					"row": 2,
+                                        "column": 2
+				},
+				"account_id": 2589629,
+				"data": [
+					{
+						"nrql": "SELECT min(cpuPercent) AS `MIN CPU(%)`,max(cpuPercent) AS `MAX CPU(%)`,average(cpuPercent) AS `AVG CPU(%)` FROM SystemSample since 1 months ago facet cases(WHERE hostname='ESOF-PROD2-WEB01' as 'ESOF-PROD2-WEB01',WHERE hostname='ESOF-PROD2-WEB02' as 'ESOF-PROD2-WEB02') limit 400 WITH TIMEZONE 'Asia/Seoul'"
+					}
+				],
+				"presentation": {
+					"title": "",
+					"notes": null,
+					"drilldown_dashboard_id": null
+				}
+			},
+			{
+				"visualization": "faceted_line_chart",
+				"layout": {
+					"width": 10,
+					"height": 1,
+					"row": 3,
+                                        "column": 5
+				},
+				"account_id": 2589629,
+				"data": [
+					{
+						"nrql": "SELECT average(memoryUsedBytes/memoryTotalBytes*100) FROM SystemSample since 1 months ago facet cases(WHERE hostname='ESOF-PROD2-WEB01' as 'ESOF-PROD2-WEB01',WHERE hostname='ESOF-PROD2-WEB02' as 'ESOF-PROD2-WEB02') TIMESERIES 3 hours WITH TIMEZONE 'Asia/Seoul'"
+					}
+				],
+				"presentation": {
+					"title": "WEB Server - Average Memory",
+					"notes": null
+				}
+			},
+			{
+				"visualization": "facet_table",
+				"layout": {
+					"width": 10,
+					"height": 1,
+					"row": 4,
+                                        "column": 2
+
+				},
+				"account_id": 2589629,
+				"data": [
+					{
+						"nrql": "SELECT min(memoryUsedBytes/memoryTotalBytes*100) AS `MIN Memory(%)`,max(memoryUsedBytes/memoryTotalBytes*100) AS `MAX Memory(%)`, average(memoryUsedBytes/memoryTotalBytes*100) AS `AVG Memory(%)` FROM SystemSample since 1 months ago facet cases(WHERE hostname='ESOF-PROD2-WEB01' as 'ESOF-PROD2-WEB01' ,WHERE hostname='ESOF-PROD2-WEB02' as 'ESOF-PROD2-WEB02') limit 400 WITH TIMEZONE 'Asia/Seoul'"
+					}
+				],
+				"presentation": {
+					"title": "",
+					"notes": null,
+					"drilldown_dashboard_id": null
+				}
+			},
+			{
+				"visualization": "faceted_line_chart",
+				"layout": {
+					"width": 10,
+					"height": 1,
+					"row": 5,
+                                        "column": 2
+				},
+				"account_id": 2589629,
+				"data": [
+					{
+						"nrql": "SELECT average(diskUsedPercent) FROM StorageSample TIMESERIES 3 hours facet `hostname`,`mountPoint` where (hostname='ESOF-PROD2-WEB01' or hostname='ESOF-PROD2-WEB02') and (`mountPoint`='/' or `mountPoint`='/boot') SINCE 1 months ago"
+					}
+				],
+				"presentation": {
+					"title": "WEB Server - DISK Usage",
+					"notes": null
+				}
+			},
+			{
+				"visualization": "facet_table",
+				"layout": {
+					"width": 10,
+					"height": 1,
+					"row": 6,
+                                        "column": 2
+				},
+				"account_id": 2589629,
+				"data": [
+					{
+						"nrql": "SELECT min(diskUsedPercent) AS 'MIN DISK USAGE', max(diskUsedPercent) AS 'MAX DISK USAGE', average(diskUsedPercent) AS 'AVG DISK USAGE' FROM StorageSample FACET `hostname`,`mountPoint` where (hostname='ESOF-PROD2-WEB01' or hostname='ESOF-PROD2-WEB02') and (`mountPoint`='/' or `mountPoint`='/boot')  SINCE 1 months ago"
+					}
+				],
+				"presentation": {
+					"title": "",
+					"notes": null,
+					"drilldown_dashboard_id": null
+				}
+			},
+			{
+				"visualization": "faceted_line_chart",
+				"layout": {
+					"width": 10,
+					"height": 1,
+					"row": 7,
+                                        "column": 2
+				},
+				"account_id": 2589629,
+				"data": [
+					{
+						"nrql": "SELECT average(receiveBytesPerSecond) FROM NetworkSample since 1 months ago facet cases(WHERE hostname='ESOF-PROD2-WEB01' as 'ESOF-PROD2-WEB01',WHERE hostname='ESOF-PROD2-WEB02' as 'ESOF-PROD2-WEB02') TIMESERIES 3 hours WITH TIMEZONE 'Asia/Seoul'"
+					}
+				],
+				"presentation": {
+					"title": "WEB Server - Inbound Traffic",
+					"notes": null
+				}
+			},
+			{
+				"visualization": "facet_table",
+				"layout": {
+					"width": 10,
+					"height": 1,
+					"row": 8,
+                                        "column": 2
+				},
+				"account_id": 2589629,
+				"data": [
+					{
+						"nrql": "SELECT min(receiveBytesPerSecond) AS `MIN INBOUND`,max(receiveBytesPerSecond) AS `MAX inbound`,average(receiveBytesPerSecond) AS `AVG Inbound` FROM NetworkSample since 1 months ago facet cases(WHERE hostname='ESOF-PROD2-WEB01' as 'ESOF-PROD2-WEB01',WHERE hostname='ESOF-PROD2-WEB02' as 'ESOF-PROD2-WEB02')  WITH TIMEZONE 'Asia/Seoul'"
+					}
+				],
+				"presentation": {
+					"title": "",
+					"notes": null,
+					"drilldown_dashboard_id": null
+				}
+			},
+			{
+				"visualization": "faceted_line_chart",
+				"layout": {
+					"width": 10,
+					"height": 1,
+					"row": 9,
+                                        "column": 2
+				},
+				"account_id": 2589629,
+				"data": [
+					{
+						"nrql": "SELECT average(transmitBytesPerSecond) FROM NetworkSample since 1 months ago facet cases(WHERE hostname='ESOF-PROD2-WEB01' as 'ESOF-PROD2-WEB01',WHERE hostname='ESOF-PROD2-WEB02' as 'ESOF-PROD2-WEB02') TIMESERIES 3 hours WITH TIMEZONE 'Asia/Seoul'"
+					}
+				],
+				"presentation": {
+					"title": "WEB Server - OutboundTraffic",
+					"notes": null
+				}
+			},
+			{
+				"visualization": "facet_table",
+				"layout": {
+					"width": 10,
+					"height": 1,
+					"row": 10,
+                                        "column": 2
+				},
+				"account_id": 2589629,
+				"data": [
+					{
+						"nrql": "SELECT min(transmitBytesPerSecond) AS `MIN OutBound`,max(transmitBytesPerSecond) AS `MAX OutBound`,average(transmitBytesPerSecond) AS `AVG OutBound` FROM NetworkSample since 1 months ago facet cases(WHERE hostname='ESOF-PROD2-WEB01' as 'ESOF-PROD2-WEB01',WHERE hostname='ESOF-PROD2-WEB02' as 'ESOF-PROD2-WEB02') limit 400 WITH TIMEZONE 'Asia/Seoul'"
+					}
+				],
+				"presentation": {
+					"title": "",
+					"notes": null,
+					"drilldown_dashboard_id": null
+				}
+			}
+		],
+		"filter": {
+			"event_types": [
+				"SystemSample"
+			],
+			"attributes": []
+		}
+	}
+}
